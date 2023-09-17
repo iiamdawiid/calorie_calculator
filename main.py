@@ -24,7 +24,6 @@ while True:
         obj.add_food_item()
 
     elif user_input == 'D':
-        # not finished
         print("DELETE ITEM".center(65, '-'))
         obj.print_stored_items()
         delete_target = input("Enter item to delete: ")

@@ -7,10 +7,8 @@
 
 class CalMacCalc():
 
-
     def __init__(self):
         pass
-
 
     def add_food_item(self):
         # write info to file so it can be accessed later and used to calculate macros 
@@ -49,6 +47,7 @@ class CalMacCalc():
                     lines_to_keep.append(line)
                 else:
                     found = True
+
         if found:
             permission = input(f"Are you sure you want to delete - {target.upper()} ? (Y/N): ")
             permission = permission.upper()
@@ -56,6 +55,7 @@ class CalMacCalc():
                 print(">>> INVALID INPUT <<<")
                 permission = input("Enter 'Y' or 'N': ")
                 permission = permission.upper()
+
             if permission == 'Y':
                 with open("food_items.txt", "w") as file:
                     file.writelines(lines_to_keep)
@@ -81,7 +81,6 @@ class CalMacCalc():
                         "Fats": elements[4],
                         "Carbs": elements[5]
                     }
-                    print(nutrition)
                     self.calculate_macros(nutrition)
                     break
         
