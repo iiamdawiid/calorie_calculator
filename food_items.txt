@@ -1,3 +1,13 @@
 chicken breast,100,110,23,1,0
 white rice,100,130,2.7,0.3,28.2
 banana,100,89,1.1,0.3,22.8
+pepperjack cheese,21,80,5,6,0
+whole wheat bread,43,110,4,2,21
+burmans ketchup,17,20,0,0,5
+bf turkey breast,56,90,9,5,1
+maple brown sugar oatmeal,43,160,4,2.5,32
+chicken nuggets,85,160,16,7,6
+old fashioned oats,40,150,5,3,27
+honey,100,305,0,0,82.4
+red berries cereal,39,140,3,0.5,34
+daisy cottage cheese,113,90,13,2.5,5

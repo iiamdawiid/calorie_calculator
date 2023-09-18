@@ -3,7 +3,7 @@
 # is user wants to look up existing food item then search for it in file and make the proper calculations for calories
 # protein, fats, carbs for the amount of food in grams the user entered
 
-# TO-DO: 
+# TO-DO: add option to track multiple items at once and calculate total calories and macros
 
 class CalMacCalc():
 
@@ -19,7 +19,6 @@ class CalMacCalc():
         self.fats = input("Amount of Fat: ")
         self.carbs = input("Amount of Carbs: ")
         print("".center(65, '-'))
-        
         item_present = False
         with open("food_items.txt", "r") as file:
             for line in file:
@@ -27,13 +26,13 @@ class CalMacCalc():
                 if self.item_name == elements[0]:
                     item_present = True
                     break
-
         if item_present:
             print(">>> ITEM ALREADY ADDED <<<\n")
         else:
             with open("food_items.txt", "a") as file:
                 new_entry = f"\n{self.item_name},{self.serving_size},{self.calories},{self.protein},{self.fats},{self.carbs}"
                 file.write(new_entry)
+                print(f"ITEM ADDED: {self.item_name.upper()}")
 
 
     def delete_food_item(self, target):
@@ -47,7 +46,6 @@ class CalMacCalc():
                     lines_to_keep.append(line)
                 else:
                     found = True
-
         if found:
             permission = input(f"Are you sure you want to delete - {target.upper()} ? (Y/N): ")
             permission = permission.upper()
@@ -55,7 +53,6 @@ class CalMacCalc():
                 print(">>> INVALID INPUT <<<")
                 permission = input("Enter 'Y' or 'N': ")
                 permission = permission.upper()
-
             if permission == 'Y':
                 with open("food_items.txt", "w") as file:
                     file.writelines(lines_to_keep)
@@ -65,12 +62,12 @@ class CalMacCalc():
 
 
     def get_food_item(self, target_item):
+        # finds target item within food_items.txt
         found = False
         with open("food_items.txt", "r") as file:
             for line in file:
                 elements = line.strip().split(",")
                 food_item = elements[0]
-
                 if target_item.lower() in food_item.lower():
                     found = True
                     nutrition = {
@@ -83,10 +80,9 @@ class CalMacCalc():
                     }
                     self.calculate_macros(nutrition)
                     break
-        
         if not found:
             print(">>> ITEM NOT FOUND <<<")
-       
+    
 
     def calculate_macros(self, nutrition):
         # retrieves values from text file and calculate proper macros based on grams user entered of said food
@@ -95,9 +91,6 @@ class CalMacCalc():
             print(">>> INVALID INPUT <<<")
             self.user_serving = input("Enter a number: ")
         self.user_serving = int(self.user_serving)
-        # with open("food_items.txt", "r") as file:
-        #     for line in file:
-        #         elements = line.strip().split(",")
         
         calories_per_gram = float(nutrition["Calories"]) / float(nutrition["Serving Size"])
         protein_per_gram = float(nutrition["Protein"]) / float(nutrition["Serving Size"])
@@ -108,11 +101,11 @@ class CalMacCalc():
         self.calc_protein = protein_per_gram * self.user_serving
         self.calc_fat = fat_per_gram * self.user_serving
         self.calc_carbs = carbs_per_gram * self.user_serving
-
         self.print_macros(nutrition)
 
 
     def print_macros(self, nutrition):
+        # prints the calculated calories and macros
         print("")
         print(f"MACROS FOR {self.user_serving}g of {nutrition['Item Name'].upper()}".center(65, '-'))
         print(f"CALORIES: {round(self.calc_calories)}")
@@ -123,6 +116,7 @@ class CalMacCalc():
 
 
     def print_stored_items(self):
+        # prints the name of food items that are stored in food_items.txt
         with open("food_items.txt", "r") as file:
             for line in file:
                 elements = line.strip().split(",")
