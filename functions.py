@@ -1,9 +1,5 @@
-# this program will ask the user if they would like to store a new food item or look up an existing one
-# if user adds new food item then store the serving size in grams, calories per serving, protein, fat, carbs in a file
-# is user wants to look up existing food item then search for it in file and make the proper calculations for calories
-# protein, fats, carbs for the amount of food in grams the user entered
-
 # TO-DO: add option to track multiple items at once and calculate total calories and macros
+# TO-DO: add ability to select food item with a number id instead of typing out name
 
 class CalMacCalc():
 
