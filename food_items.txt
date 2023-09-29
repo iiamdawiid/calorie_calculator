@@ -19,3 +19,5 @@ honey smoked ham,56,80,10,2.5,3
 lowell bigos,220,180,2,15,13
 apple cinnamon oatmeal,35,130,3,1.5,27
 organic strawberry spread,18,40,0,0,9
+blueberries,105,60,0.8,0.3,15.2
+muenster cheese,21,80,5,6,0
